@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div align="center" style="margin-top: 100px;">
+        <form method="post" action="" name="questions">
+            {{ form.hidden_tag() }}
+            {{ form.hidden_tag() }}
+            {% if stage == 'val' %}
+                <label for="answer">Компания-производитель "лучших" подарков на день святого Валентина</label>
+            {% endif %}
+            {% if stage == 'biz' %}
+                <label for="answer">Животное экзотичнее бизона</label>
+            {% endif %}
+            {% if stage == 'int' %}
+                <label for="answer">Самый благозвучный интервал (в тонах)</label>
+            {% endif %}
+            <br><br>
+            {{ form.answer }}
+            {% if error is not none %}<br><br><span style="color:red;">{{ error }}</span> {% endif %}
+            <br><br>
+            <input type="submit" value="Ответить">
+        </form>
+    </div>
+{% endblock %}

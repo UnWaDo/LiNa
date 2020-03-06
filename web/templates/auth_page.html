@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div align="center" style="margin-top: 100px;">
+    {% if user is none %}
+    <form action="" method="post" name="auth">
+        {{form.hidden_tag()}}
+
+        {% for error in form.errors.login %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <br>
+        {{form.login(size=30)}}
+        <br>
+        <br>
+        {% for error in form.errors.password %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <br>
+        {{form.password(size=30)}}
+        <br>
+        <br>
+
+        <br>
+        <br>
+        <input type="submit" value="Войти">
+    </form>
+    {% endif %}
+    {% if user is not none %}
+        <h2>Вы уже вошли в аккаунт, {{ user.login }}</h2>
+    {% endif %}
+    </div>
+{% endblock %}

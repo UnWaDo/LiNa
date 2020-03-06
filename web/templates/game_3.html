@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div align="center">
+        <p>
+            Некоторые литературные произведения
+            цепляют буквально парой своих строчек, которые впоследствии могут стать пророческими.
+        </p>
+        <h4>
+            Установите правильный порядок картинок
+        </h4>
+        <form action="" name="pic_form" method="post">
+            {{ form.hidden_tag() }}
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/h.jpg">
+            {{ form.pic1 }}
+        </div>
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/ht.jpg">
+            {{ form.pic2 }}
+        </div>
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/l.jpg">
+            {{ form.pic3 }}
+        </div>
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/m.png">
+            {{ form.pic4 }}
+        </div>
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/s.jpg">
+            {{ form.pic5 }}
+        </div>
+        <div style="display:inline;">
+            <img style="max-width: 250px; max-height:250px;" src="/static/w.jpg">
+            {{ form.pic6 }}
+        </div>
+        {% if error is not none %} <br><br><span style="color:red;">{{ error }}</span> {% endif %}
+        <br>
+        <br>
+        <input type="submit" name="submit" value="Проверка">
+        </form>
+    </div>
+{% endblock %}

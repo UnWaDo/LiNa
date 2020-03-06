@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div align="center" style="margin-top: 100px;">
+    {% if user is not none %}
+        <h4>Итак, это было просто...</h4>
+        <p>Счастье для каждого своё. Иногда его можно найти в близком человеке, иногда за него приходится бороться</p>
+        <p>"Если жизнь рисуется вам в чёрных красках, если вашему сердцу чего-то недостает, вы не будете счастливы, какой бы роскошью себя ни окружили. Но если вы достигли внутреннего спокойствия, то можете обрести счастье даже в самых тяжелых условиях."</p>
+        <p align="right">Далай-Лама XIV</p>
+        <br>
+        <p>Если иметь достаточно сил, то счастье можно найти в любой ситуации. Чтобы пройти дальше, Вам нужно составить слово "счастье" из предложенных букв</p>
+        <br>
+        <form action="" method="post" name="happiness_form">
+            {{ form.hidden_tag() }}
+            <p>{{ form.let1 }}{{ form.let2 }}{{ form.let3 }}{{ form.let4 }}{{ form.let5 }}{{ form.let6 }}{{ form.let7 }}</p>
+            {% if error is not none %}<span style="color:red;">{{ error }}</span> {% endif %}
+            <br>
+            <input name="submit" value="Проверить" type="submit">
+        </form>
+
+    {% endif %}
+    {% if user is none %}
+        <p>Если Вы попали сюда, то что-то пошло не так.</p>
+    {% endif %}
+    </div>
+{% endblock %}

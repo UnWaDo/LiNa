@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div align="center" style="margin-top: 100px;">
+    {% if user is not none %}
+        <h2>Здравствуйте, {{user.login}}!</h2>
+        <h3>Я хочу сыграть с Вами в одну игру</h3>
+        <p>Если Вы хотите начать, нажмите на кнопку</p>
+        <br>
+        <form action="" method="post" name="submit_form">
+            {{ form.hidden_tag() }}
+            {{ form.submit(disabled=True) }}
+        </form>
+
+    {% endif %}
+    {% if user is none %}
+        <p>Если Вы попали сюда, то что-то пошло не так.</p>
+    {% endif %}
+    </div>
+{% endblock %}
