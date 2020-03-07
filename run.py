@@ -2,4 +2,4 @@ from web import app
 
 
 app.debug = False
-app.run(host='http://gamefourtwo.herokuapp.com/')
+app.run(host='127.0.0.1', port=33507)
