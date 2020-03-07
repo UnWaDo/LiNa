@@ -1,1 +1,1 @@
-﻿web: gunicorn app:LiNa
+﻿web: gunicorn LiNa:app
