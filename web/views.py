@@ -48,6 +48,8 @@ def game_level(level):
     if level > max_level or level < 1:
         return redirect(url_for('game_level', level=user.level))
 
+    if level == max_level:
+        return render_template('the_end.html', title='Конец', user=user)
     if level == 1:
         return level_1(user)
     if level == 2:
