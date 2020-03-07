@@ -1,2 +1,2 @@
 CSRF_ENABLED = True
-SECRET_KEY = 'My-first-secret-key'
+SECRET_KEY = '324a35fa8b37085ee1bec2557515dfec'
