@@ -101,8 +101,6 @@ def level_4(user):
     form = Level4Form()
     stage = session.get('lvl4')
     error = None
-    stages = {'val': 'fissman', 'biz': '', 'int': '1/4 тона'}
-    stage_num = [i for i in stages.keys()]
 
     if stage is None:
         session['lvl4'] = 'val'
@@ -111,13 +109,26 @@ def level_4(user):
     if not form.validate_on_submit():
         return render_template('game_4.html', title='Уровень 4', user=user, form=form, stage=stage, error=error)
 
-    if stage == 'val' and 'fissman' in form.answer.data.lower():
+    user_ans = form.answer.data.lower()
+    if stage == 'val' and 'fissman' in user_ans:
         stage = 'biz'
         session['lvl4'] = 'biz'
+        return redirect(url_for('game_level', level=4))
+    elif stage == 'biz' and 'изюбрь' in user_ans:
+        stage = 'int'
+        session['lvl4'] = 'int'
+        return redirect(url_for('game_level', level=4))
+    elif stage == 'int' and ('1/4 тона' in user_ans or 'четверть тона' in user_ans):
+        stage = 'prk'
+        session['lvl4'] = 'prk'
+        return redirect(url_for('game_level', level=4))
+    elif stage == 'prk' and 'шредер' in user_ans:
+        if user.level == 4:
+            update_user_level(user.login, 5)
+        return redirect(url_for('game_level', level=5))
+    else:
         error = 'Неверный ответ'
-    elif stage == '':
-        pass
-    return render_template('game_4.html', title='Уровень 4', user=user, form=form, stage=stage, error=error)
+    return render_template('game_4.html', title='Уровень 4', user=user, form=Level4Form(), stage=stage, error=error)
 
 
 @app.route('/logout')
