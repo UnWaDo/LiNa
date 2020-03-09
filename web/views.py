@@ -39,7 +39,7 @@ def auth():
 
 @app.route('/game/<int:level>', methods=['GET', 'POST'])
 def game_level(level):
-    max_level = 5
+    max_level = 6
     user = cur_user()
     if user is None:
         return redirect(url_for('auth'))
